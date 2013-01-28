@@ -21,4 +21,9 @@ public class Position {
     public int differenceInCells(Position position){
         return Math.abs(row - position.row) + Math.abs(col - position.col);
     }
+
+    @Override
+    public String toString(){
+        return getRow() + ", " + getCol();
+    }
 }
