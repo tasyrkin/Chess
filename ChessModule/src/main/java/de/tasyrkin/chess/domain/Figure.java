@@ -2,6 +2,9 @@ package de.tasyrkin.chess.domain;
 
 import java.util.List;
 
+/**
+ * Represents all figures.
+ */
 public abstract class Figure {
 
     protected Position position;
@@ -12,14 +15,16 @@ public abstract class Figure {
         this.color = color;
     }
 
-    public boolean moveTo(Position newPosition){
-        if(isValidMoveTo(position)){
-            position = newPosition;
-            return true;
-        }
-        return false;
-    }
+    /**
+     * Is the position valid for the figure to move to.
+     */
     public abstract boolean isValidMoveTo(Position position);
-    public abstract List<Position> getMovePositions();
 
+    public Color getColor() {
+        return color;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
 }
