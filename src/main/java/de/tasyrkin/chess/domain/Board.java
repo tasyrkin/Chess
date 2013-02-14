@@ -1,6 +1,6 @@
 package de.tasyrkin.chess.domain;
 
-import com.google.common.base.Preconditions;
+import com.google.common.base.Optional;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
@@ -20,11 +20,11 @@ public class Board {
         setPawns(SIZE-2, Color.WHITE);
     }
 
-    public Figure atPosition(Position position){
+    public Optional<Figure> atPosition(Position position){
 
         checkArgument(isValid(position), "The position [%s] is not valid", position.toString());
 
-        return positions[position.getRow()][position.getRow()];
+        return Optional.fromNullable(positions[position.getRow()][position.getRow()]);
     }
 
     private boolean isValid(Position position){
@@ -37,7 +37,7 @@ public class Board {
 
     private void setPawns(int row, Color color) {
         for(int column = 0; column < SIZE; column++){
-            positions[1][column] = new Pawn(new Position(row, column), color);
+            positions[row][column] = new Pawn(new Position(row, column), color);
         }
     }
 }

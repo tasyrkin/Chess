@@ -1,7 +1,5 @@
 package de.tasyrkin.chess.domain;
 
-import java.util.List;
-
 /**
  * Represents all figures.
  */
@@ -19,6 +17,11 @@ public abstract class Figure {
      * Is the position valid for the figure to move to.
      */
     public abstract boolean isValidMoveTo(Position position);
+
+    /**
+     * Is the position valid to cut another figure.
+     */
+    public abstract boolean isValidToCutAt(Position position);
 
     public Color getColor() {
         return color;
